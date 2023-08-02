@@ -1,0 +1,18 @@
+server:
+  port: ${multiplecloudservices.port}
+  error:
+    include-stacktrace: never
+
+spring:
+  application:
+    name: subscription-service
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  datasource:
+    url: ${ewan.services.subscription.datasource.url}
+    username: ${ewan.services.subscription.datasource.username}
+    password: ${ewan.services.subscription.datasource.password}
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  flyway:
+    baseline-on-migrate: true
