@@ -1,4 +1,4 @@
-package ar.com.multiplecludservices.util;
+package ar.com.multiplecloudservices.util;
 
 public class Path {
     public static final String HEALTCHECK = "/healthCheck";

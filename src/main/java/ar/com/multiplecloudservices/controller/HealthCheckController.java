@@ -1,6 +1,6 @@
-package ar.com.multiplecludservices.controller;
+package ar.com.multiplecloudservices.controller;
 
-import ar.com.multiplecludservices.util.Path;
+import ar.com.multiplecloudservices.util.Path;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

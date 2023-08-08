@@ -5,13 +5,13 @@ server:
 
 spring:
   application:
-    name: subscription-service
+    name: multiple-cloud-services
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
   datasource:
-    url: ${ewan.services.subscription.datasource.url}
-    username: ${ewan.services.subscription.datasource.username}
-    password: ${ewan.services.subscription.datasource.password}
+    url: ${multiplecloudservices.datasource.url}
+    username: ${multiplecloudservices.datasource.username}
+    password: ${multiplecloudservices.datasource.password}
   jackson:
     property-naming-strategy: SNAKE_CASE
   flyway:
