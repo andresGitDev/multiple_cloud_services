@@ -1,4 +1,4 @@
-package ar.com.multiplecoudservices.entity;
+package ar.com.multiplecloudservices.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

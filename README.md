@@ -1,33 +1,35 @@
-# Subscription service
-This project mange access to ewan microservices
+# QR-code Generator and Reader
+# Ctz Dollar
 
-## Installation
-- [Java 8](https://jdk.java.net/8/)
-- [Maven](https://maven.apache.org/download.cgi)
-- [PostgreSQL 15](https://www.postgresql.org/download/)
+## Application used [Java 1.8]
 
-### Run project in localhost
+###### Spring boot application exposing REST API endpoint to genrate QR-code and ctz dollar representing custom message and another endpoint to read the decoded message, built using Java [Spring boot] and [google's zxing library](https://opensource.google/projects/zxing).
 
-#### Create Database
+<center>
+	<a target='_blank' href='https://spring-boot-qr-code-generator.herokuapp.com/swagger-ui/index.html?configUrl=/v3/api-docs/swagger-config'>Running Application</a>
+</center>
 
-`` CREATE DATABASE multiple_clud_services;``
+## Local Setup
 
-#### Create user and grant access
-`` CREATE USER ewan WITH PASSWORD 'mcs'; ``
+* Install [Java 1.8]
+* Install [Maven](https://onurdesk.com/what-is-maven-plugin/)
 
-`` GRANT ALL PRIVILEGES ON DATABASE ewan_subscription TO ewan;``
+Run the below commands in the core
 
-`` GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO ewan;``
+```
+mvn clean install
+```
 
-### Run and execute test
-Place in root directory of the project
+```
+mvn spring-boot:run
 
-``cd path/to/the/project``
+```
 
-#### Run tests
+server port is configured to 9095 which can be changed in application.properties file
 
-`` mvn test ``
+Go to the below url to view swagger-ui (API docs)
 
-### Health Check
-
-http://localhost:8095/healthCheck 
+```
+http://localhost:9095/ctz-api/swagger-ui.html
+http://testing.betasepp.com.ar:9110/ctz-api/swagger-ui.html
+```

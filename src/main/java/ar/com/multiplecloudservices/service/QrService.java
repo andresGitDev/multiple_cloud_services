@@ -1,4 +1,4 @@
-package ar.com.multiplecoudservices.service;
+package ar.com.multiplecloudservices.service;
 
 import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
@@ -26,7 +26,7 @@ import com.google.zxing.common.BitMatrix;
 import com.google.zxing.common.HybridBinarizer;
 import com.google.zxing.qrcode.QRCodeWriter;
 
-import ar.com.multiplecoudservices.dto.CtzGenerationRequestDto;
+import ar.com.multiplecloudservices.dto.CtzGenerationRequestDto;
 import lombok.var;
 
 

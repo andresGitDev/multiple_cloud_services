@@ -1,4 +1,4 @@
-package ar.com.multiplecoudservices.shared;
+package ar.com.multiplecloudservices.shared;
 
 import java.io.IOException;
 import java.io.InputStream;

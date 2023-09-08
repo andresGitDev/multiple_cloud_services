@@ -1,4 +1,4 @@
-package ar.com.multiplecoudservices.entity;
+package ar.com.multiplecloudservices.entity;
 
 import java.math.BigDecimal;
 

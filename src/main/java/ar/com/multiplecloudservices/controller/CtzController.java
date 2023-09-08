@@ -1,4 +1,4 @@
-package ar.com.multiplecoudservices.controller;
+package ar.com.multiplecloudservices.controller;
 
 import java.util.List;
 
@@ -10,9 +10,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import ar.com.multiplecoudservices.entity.Dollar;
-import ar.com.multiplecoudservices.entity.DollarTypes;
-import ar.com.multiplecoudservices.service.CtzService;
+import ar.com.multiplecloudservices.entity.Dollar;
+import ar.com.multiplecloudservices.entity.DollarTypes;
+import ar.com.multiplecloudservices.service.CtzService;
 import io.swagger.v3.oas.annotations.Operation;
 import lombok.AllArgsConstructor;
 

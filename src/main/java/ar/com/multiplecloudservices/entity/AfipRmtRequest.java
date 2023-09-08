@@ -1,4 +1,4 @@
-package ar.com.multiplecoudservices.dto;
+package ar.com.multiplecloudservices.entity;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -16,7 +16,7 @@ import lombok.NoArgsConstructor;
 @JacksonStdImpl
 @NoArgsConstructor
 @AllArgsConstructor
-public class CtzGenerationRequestDto {
+public class AfipRmtRequest {
 
 	@Schema(description = "Title of your message", required = true, example = "Important message")
 	@NotBlank(message = "title must not be empty")

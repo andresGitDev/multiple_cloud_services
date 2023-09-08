@@ -1,5 +1,5 @@
 
-package ar.com.multiplecoudservices.configuration.properties;
+package ar.com.multiplecloudservices.configuration.properties;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 

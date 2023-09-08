@@ -1,4 +1,4 @@
-package ar.com.multiplecoudservices.controller;
+package ar.com.multiplecloudservices.controller;
 
 import java.io.IOException;
 
@@ -19,8 +19,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.zxing.NotFoundException;
 import com.google.zxing.WriterException;
 
-import ar.com.multiplecoudservices.dto.CtzGenerationRequestDto;
-import ar.com.multiplecoudservices.service.QrService;
+import ar.com.multiplecloudservices.dto.CtzGenerationRequestDto;
+import ar.com.multiplecloudservices.service.QrService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import lombok.AllArgsConstructor;

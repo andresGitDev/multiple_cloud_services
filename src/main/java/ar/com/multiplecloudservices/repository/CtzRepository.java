@@ -1,4 +1,4 @@
-package ar.com.multiplecoudservices.repository;
+package ar.com.multiplecloudservices.repository;
 
 import static org.springframework.http.HttpMethod.GET;
 
@@ -14,9 +14,9 @@ import org.springframework.stereotype.Repository;
 import org.springframework.web.client.RequestCallback;
 import org.springframework.web.client.RestTemplate;
 
-import ar.com.multiplecoudservices.component.CtzExtractor;
-import ar.com.multiplecoudservices.entity.Dollar;
-import ar.com.multiplecoudservices.entity.DollarTypes;
+import ar.com.multiplecloudservices.component.CtzExtractor;
+import ar.com.multiplecloudservices.entity.Dollar;
+import ar.com.multiplecloudservices.entity.DollarTypes;
 
 @Repository
 public class CtzRepository {

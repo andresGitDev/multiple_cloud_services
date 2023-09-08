@@ -1,4 +1,4 @@
-package ar.com.multiplecoudservices.component;
+package ar.com.multiplecloudservices.component;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -11,9 +11,9 @@ import org.springframework.stereotype.Component;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-import ar.com.multiplecoudservices.entity.Dollar;
-import ar.com.multiplecoudservices.entity.DollarCreator;
-import ar.com.multiplecoudservices.shared.AbstractResponseExtractor;
+import ar.com.multiplecloudservices.entity.Dollar;
+import ar.com.multiplecloudservices.entity.DollarCreator;
+import ar.com.multiplecloudservices.shared.AbstractResponseExtractor;
 
 @Component
 public class CtzExtractor extends AbstractResponseExtractor<Dollar> {

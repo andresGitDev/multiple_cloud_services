@@ -1,10 +1,10 @@
-package ar.com.multiplecoudservices.configuration;
+package ar.com.multiplecloudservices.configuration;
 
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-import ar.com.multiplecoudservices.configuration.properties.OpenApiConfigurationProperties;
+import ar.com.multiplecloudservices.configuration.properties.OpenApiConfigurationProperties;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
 import io.swagger.v3.oas.models.info.Info;
