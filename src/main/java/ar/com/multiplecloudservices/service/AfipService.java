@@ -1,8 +1,10 @@
 package ar.com.multiplecloudservices.service;
 
-import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
@@ -12,32 +14,29 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import ar.com.multiplecloudservices.model.PersonaTo;
+import ar.com.multiplecloudservices.shared.HttpRestConsuming;
 import lombok.Getter;
-import okhttp3.MediaType;
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.RequestBody;
-import okhttp3.Response;
+import lombok.RequiredArgsConstructor;
 
 @Getter
 @Service
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AfipService {
 
 	@Value("${afip.url}")
 	private String afipUrl;
-
-	public PersonaTo getData(String cuit) throws IOException {
+	private final HttpRestConsuming restConsuming;
+	
+	public PersonaTo getData(String cuit) throws Exception {
+		if (!verificado(cuit))
+			throw new Exception("Cuit invalido (" + cuit + ").");
+		Map<String, String> vars = new HashMap<String, String>();
 		String endPoint = this.afipUrl.replace("{cuit}", cuit);
-		OkHttpClient client = new OkHttpClient().newBuilder().build();
-		MediaType mediaType = MediaType.parse("text/plain");
-		RequestBody body = RequestBody.create(mediaType, "");
-		Request request = new Request.Builder().url(endPoint).method("POST", body).addHeader("Cookie",
-				"ARRAffinity=bcfe566c8e623f3a734e6c1260843f9c13b2ed089a23f8760b7ab7f8ecaeef54; ARRAffinitySameSite=bcfe566c8e623f3a734e6c1260843f9c13b2ed089a23f8760b7ab7f8ecaeef54")
-				.build();
-		Response response = client.newCall(request).execute();
-		return personaMapper(response.body().string());
+		vars.put("cuit", cuit);
+		String response = restConsuming.getHttp(endPoint, String.class, vars);
+		return personaMapper(response);
 	}
-
+	
 	private PersonaTo personaMapper(String body) throws JsonMappingException, JsonProcessingException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		JsonNode jsonNode = objectMapper.readTree(body);

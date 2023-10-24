@@ -1,8 +1,8 @@
 package ar.com.multiplecloudservices.controller;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import ar.com.multiplecloudservices.model.PersonaTo;
@@ -16,7 +16,7 @@ public class AfipController {
 
 	private AfipService afipService;
 
-	@RequestMapping(path = "/afip/{cuit}")
+	@GetMapping(path = "/afip/{cuit}")
 	public ResponseEntity<PersonaTo> afipData(@PathVariable String cuit) throws Exception {
 		PersonaTo persona= new PersonaTo();
 		if (!afipService.verificado(cuit)) {
