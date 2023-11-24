@@ -31,4 +31,15 @@ public class AfipController {
 		return ResponseEntity.ok(persona) ;
 	}
 
+	@GetMapping(path = "/cuit/{dni}")
+	public ResponseEntity<String> afipCuit(@PathVariable String dni) throws Exception {
+		String cuit="";
+		try {
+			cuit=afipService.getCuit(dni);
+		} catch (Exception e) {
+			throw new Exception("Error al obtener data. " + e.getMessage());
+		}
+
+		return ResponseEntity.ok(cuit) ;
+	}
 }

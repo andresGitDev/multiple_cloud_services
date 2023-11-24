@@ -25,8 +25,10 @@ public class AfipService {
 
 	@Value("${afip.url}")
 	private String afipUrl;
+	@Value("${afip.cuitUrl}")
+	private String afipCuitUrl;
 	private final HttpRestConsuming restConsuming;
-	
+
 	public PersonaTo getData(String cuit) throws Exception {
 		if (!verificado(cuit))
 			throw new Exception("Cuit invalido (" + cuit + ").");
@@ -36,17 +38,35 @@ public class AfipService {
 		String response = restConsuming.getHttp(endPoint, String.class, vars);
 		return personaMapper(response);
 	}
-	
+
+	public String getCuit(String dni) throws Exception {
+		Map<String, String> vars = new HashMap<String, String>();
+		String endPoint = this.afipCuitUrl.replace("{dni}", dni);
+		vars.put("dni", dni);
+		String response = restConsuming.getHttp(endPoint, String.class, vars);
+		return cuitMapper(response);
+	}
+
+	private String cuitMapper(String body) throws JsonMappingException, JsonProcessingException {
+		ObjectMapper objectMapper = new ObjectMapper();
+		JsonNode jsonNode = objectMapper.readTree(body);
+
+		JsonNode jsonData = jsonNode.get("data");
+		String cuit = jsonData.get(0).asText();
+
+		return cuit;
+	}
+
 	private PersonaTo personaMapper(String body) throws JsonMappingException, JsonProcessingException {
 		ObjectMapper objectMapper = new ObjectMapper();
 		JsonNode jsonNode = objectMapper.readTree(body);
-		
+
 		JsonNode jsonContribuyente = jsonNode.get("Contribuyente");
 		String idPersona = jsonContribuyente.get("idPersona").asText();
 		String tipoClave = jsonContribuyente.get("tipoClave").asText();
 		String estadoClave = jsonContribuyente.get("estadoClave").asText();
 		String nombre = jsonContribuyente.get("nombre").asText();
-		
+
 		JsonNode jsonDomicilio = jsonContribuyente.get("domicilioFiscal");
 		String direccion = jsonDomicilio.get("direccion").asText();
 		String localidad = jsonDomicilio.get("localidad").asText();
