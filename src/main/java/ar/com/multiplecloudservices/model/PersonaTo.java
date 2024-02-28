@@ -15,6 +15,7 @@ public class PersonaTo {
 	private String estadoClave;
 	private String nombre;
 	private String sexo;
+	private String fechaNacimiento;
 	private String direccion;
 	private String localidad;
 	private String codPostal;

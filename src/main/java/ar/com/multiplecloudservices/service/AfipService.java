@@ -67,6 +67,7 @@ public class AfipService {
 		String estadoClave = jsonContribuyente.get("estadoClave").asText();
 		String nombre = jsonContribuyente.get("nombre").asText();
 		String sexo = jsonContribuyente.get("Sexo").asText();
+		String fechaNac = jsonContribuyente.get("fechaNacimiento").asText();
 
 		String esRI = jsonContribuyente.get("EsRI").asText();
 		String esM = jsonContribuyente.get("EsMonotributo").asText();
@@ -80,7 +81,7 @@ public class AfipService {
 		String nombreProvincia = jsonDomicilio.get("nombreProvincia").asText();
 
 		return PersonaTo.builder().idPersona(idPersona).tipoClave(tipoClave).estadoClave(estadoClave).nombre(nombre)
-				.sexo(sexo).direccion(direccion).localidad(localidad).codPostal(codPostal)
+				.sexo(sexo).fechaNacimiento(fechaNac).direccion(direccion).localidad(localidad).codPostal(codPostal)
 				.nombreProvincia(nombreProvincia).esResponsableInscripto(esRI).esMonotributo(esM).esExento(esE)
 				.esConsumidorFinal(esCF).build();
 	}
