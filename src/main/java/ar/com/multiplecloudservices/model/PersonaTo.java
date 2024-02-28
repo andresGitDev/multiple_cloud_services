@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class PersonaTo {
 	private String idPersona;
 	private String tipoClave;
+	private String tipoDocumento;
 	private String estadoClave;
 	private String nombre;
 	private String sexo;
