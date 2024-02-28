@@ -66,6 +66,12 @@ public class AfipService {
 		String tipoClave = jsonContribuyente.get("tipoClave").asText();
 		String estadoClave = jsonContribuyente.get("estadoClave").asText();
 		String nombre = jsonContribuyente.get("nombre").asText();
+		String sexo = jsonContribuyente.get("Sexo").asText();
+
+		String esRI = jsonContribuyente.get("EsRI").asText();
+		String esM = jsonContribuyente.get("EsMonotributo").asText();
+		String esE = jsonContribuyente.get("EsExento").asText();
+		String esCF = jsonContribuyente.get("EsConsumidorFinal").asText();
 
 		JsonNode jsonDomicilio = jsonContribuyente.get("domicilioFiscal");
 		String direccion = jsonDomicilio.get("direccion").asText();
@@ -74,8 +80,9 @@ public class AfipService {
 		String nombreProvincia = jsonDomicilio.get("nombreProvincia").asText();
 
 		return PersonaTo.builder().idPersona(idPersona).tipoClave(tipoClave).estadoClave(estadoClave).nombre(nombre)
-				.direccion(direccion).localidad(localidad).codPostal(codPostal).nombreProvincia(nombreProvincia)
-				.build();
+				.sexo(sexo).direccion(direccion).localidad(localidad).codPostal(codPostal)
+				.nombreProvincia(nombreProvincia).esResponsableInscripto(esRI).esMonotributo(esM).esExento(esE)
+				.esConsumidorFinal(esCF).build();
 	}
 
 	public Boolean verificado(String number) {
