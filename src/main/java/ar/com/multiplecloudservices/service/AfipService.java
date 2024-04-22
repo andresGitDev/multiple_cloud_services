@@ -67,23 +67,51 @@ public class AfipService {
 		String tipoDoc = jsonContribuyente.get("tipoDocumento").asText();
 		String estadoClave = jsonContribuyente.get("estadoClave").asText();
 		String nombre = jsonContribuyente.get("nombre").asText();
-		String sexo = jsonContribuyente.get("Sexo").asText();
-		String fechaNac = jsonContribuyente.get("fechaNacimiento").asText();
+//		String sexo = jsonContribuyente.get("Sexo").asText();
+//		String fechaNac = jsonContribuyente.get("fechaNacimiento").asText();
 
 		String esRI = jsonContribuyente.get("EsRI").asText();
 		String esM = jsonContribuyente.get("EsMonotributo").asText();
 		String esE = jsonContribuyente.get("EsExento").asText();
-		String esCF = jsonContribuyente.get("EsConsumidorFinal").asText();
+//		String esCF = jsonContribuyente.get("EsConsumidorFinal").asText();
+		String esCF = esRI.equals("false") && esM.equals("false") && esE.equals("false") ? "true" : "false";
+//		String condicionIva = esRI.equals("true") ? "IVA Responsable Inscripto"
+//				: (esM.equals("true") ? "Responsable Monotributo"
+//						: (esE.equals("true") ? "IVA Sujeto Exento" : (esCF.equals("true") ? "Consumidor Final" : "")));
+
+		String condicionIva = esRI.equals("true") ? "1"
+				: (esM.equals("true") ? "6" : (esE.equals("true") ? "4" : (esCF.equals("true") ? "5" : "")));
 
 		JsonNode jsonDomicilio = jsonContribuyente.get("domicilioFiscal");
 		String direccion = jsonDomicilio.get("direccion").asText();
 		String localidad = jsonDomicilio.get("localidad").asText();
 		String codPostal = jsonDomicilio.get("codPostal").asText();
-		String nombreProvincia = jsonDomicilio.get("nombreProvincia").asText();
+		String idProvincia = jsonDomicilio.get("idProvincia").asText();
+
+		JsonNode jsonActividades = jsonContribuyente.get("ListaActividades");
+		String actividad = "";
+		for (JsonNode actividadNode : jsonActividades) {
+			Integer idActividad = actividadNode.path("idActividad").asInt();
+			String descActividad = actividadNode.path("descActividad").asText();
+//			Integer nomenclador = actividadNode.path("nomenclador").asInt();
+//			Integer orden = actividadNode.path("orden").asInt();
+//			Integer periodo = actividadNode.path("periodo").asInt();
+//			if (orden == 1) {
+//				actividad = idActividad.toString() + "-" + descActividad;
+//			}
+			actividad = idActividad.toString() + "-" + descActividad;
+			break;
+		}
+
+		direccion = direccion == "null" ? "" : direccion;
+		codPostal = codPostal == "null" ? "" : "CP" + codPostal;
+		idProvincia = idProvincia == "null" ? "" : idProvincia;
+		localidad = localidad == "null" ? "" : localidad;
+
 
 		return PersonaTo.builder().idPersona(idPersona).tipoClave(tipoClave).tipoDocumento(tipoDoc)
-				.estadoClave(estadoClave).nombre(nombre).sexo(sexo).fechaNacimiento(fechaNac).direccion(direccion)
-				.localidad(localidad).codPostal(codPostal).nombreProvincia(nombreProvincia).esResponsableInscripto(esRI)
+				.estadoClave(estadoClave).nombre(nombre).direccion(direccion)
+				.localidad(localidad).codPostal(codPostal).idProvincia(idProvincia).esResponsableInscripto(esRI)
 				.esMonotributo(esM).esExento(esE).esConsumidorFinal(esCF).build();
 	}
 

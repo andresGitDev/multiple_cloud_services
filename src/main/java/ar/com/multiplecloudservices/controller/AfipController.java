@@ -24,25 +24,25 @@ public class AfipController {
 		try {
 			persona = afipService.getData(cuit);
 		} catch (Exception e) {
-			throw new Exception("Error al obtener data. " + e.getMessage());
+			throw new Exception("Error al obtener datos. " + e.getMessage());
 		}
 
 		return ResponseEntity.ok(persona);
 	}
 
-	@GetMapping(path = "/byDni/{dni}")
-	public ResponseEntity<PersonaTo> afipCuit(@PathVariable String dni) throws Exception {
-		PersonaTo persona = new PersonaTo();
-		try {
-			String cuit = afipService.getCuit(dni);
-			if (!afipService.verificado(cuit))
-				throw new Exception("Dni invalido. ");
-			persona = afipService.getData(cuit);
-
-		} catch (Exception e) {
-			throw new Exception("Error al obtener data. " + e.getMessage());
-		}
-
-		return ResponseEntity.ok(persona);
-	}
+//	@GetMapping(path = "/byDni/{dni}")
+//	public ResponseEntity<PersonaTo> afipCuit(@PathVariable String dni) throws Exception {
+//		PersonaTo persona = new PersonaTo();
+//		try {
+//			String cuit = afipService.getCuit(dni);
+//			if (!afipService.verificado(cuit))
+//				throw new Exception("Dni invalido. ");
+//			persona = afipService.getData(cuit);
+//
+//		} catch (Exception e) {
+//			throw new Exception("Error al obtener data. " + e.getMessage());
+//		}
+//
+//		return ResponseEntity.ok(persona);
+//	}
 }

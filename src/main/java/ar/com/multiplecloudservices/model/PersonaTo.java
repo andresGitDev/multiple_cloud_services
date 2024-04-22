@@ -15,12 +15,10 @@ public class PersonaTo {
 	private String tipoDocumento;
 	private String estadoClave;
 	private String nombre;
-	private String sexo;
-	private String fechaNacimiento;
 	private String direccion;
 	private String localidad;
 	private String codPostal;
-	private String nombreProvincia;
+	private String idProvincia;
 	private String esResponsableInscripto;
 	private String esMonotributo;
 	private String esExento;
